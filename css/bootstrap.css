@@ -420,10 +420,11 @@ h6, .h6 {
 }
 
 hr {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 85%;
 }
 
 small,
@@ -545,7 +546,7 @@ pre code {
   overflow-y: scroll;
 }
 
-.container {
+.container .fixture{
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;

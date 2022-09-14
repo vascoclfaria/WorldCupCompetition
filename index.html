@@ -101,9 +101,7 @@
   </div>
   <!-- end hero area -->
 
-
-  <!-- about section -->
-  <section class="about_section layout_padding">
+  <section class="about_section layout_padding mt-4">
     <div class="about_container">
       <div class="container">
         <!-- <form action="" id="betForm">
@@ -113,27 +111,45 @@
           <input type="number" id="team2" name="team2" value="0"><br><br>
           <button type="submit">Submit</button> 
         </form> -->
-        <ul>
+        <div>
           <div class="fixture-index tournament">
-            <span>Round of 32</span>
+            <span>Fase de Grupos</span>
           </div> <!-- location.href='index.html' -->
           <div class="fixture" onclick="goToGame();" data-match-id="11076">
             <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
             <div class="score-board">
               <div class="home">
                 <div><img class="team-img" src="images/Countries/Portugal.png"></div>
-                <div id="home_team"><span>Undefined</span></div>
+                <div><span id="home_team">Portugal</span></div>
               </div>
               <div class="score">2-0</div>
               <div class="away">
                 <div><img class="team-img" src="images/Countries/Espanha.png"></div>
-                <div id="away_team"></div><span>Undefined</span>
+                <div><span id="away_team">Espanha</span>
+                </div>
+              </div>
+            </div>
+            <div class="match-info">YOUR BET</div>
+          </div>
+          <hr/>
+          <div class="fixture" onclick="goToGame();" data-match-id="11076">
+            <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+            <div class="score-board">
+              <div class="home">
+                <div><img class="team-img" src="images/Countries/Portugal.png"></div>
+                <div><span id="home_team">Portugal</span></div>
+              </div>
+              <div class="score">2-0</div>
+              <div class="away">
+                <div><img class="team-img" src="images/Countries/Espanha.png"></div>
+                <div><span id="away_team">Espanha</span>
+                </div>
               </div>
             </div>
           </div>
-        </ul>
+        </div>
       </div>
-    </div>
+      </div>
   </section>
   <!-- end about section -->
 
@@ -158,7 +174,7 @@
       let home = document.getElementById("home_team").innerHTML;
       let away = document.getElementById("away_team").innerHTML;
 
-      let game = home.concat("VS", away);
+      let game = home.concat("_", away);
       localStorage.setItem("game", game);
       window.location.href = "index.html";
     }
