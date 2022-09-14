@@ -1,0 +1,1051 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Footplr : Asian</title>
+    <link rel="stylesheet" type="text/css" href="css/test2.css">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,500,700" rel="stylesheet" type="text/css">
+    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+
+    <div class="main-nav">
+        <div class="main-nav-wrap">
+            <div class="main-logo">
+                <a href="/"><img src="/img/logo_red.svg"></a>
+            </div>
+            <div class="user-action">
+                <div class="header-tool">
+                    <span class="cup-manage">Manage competition</span>
+                </div>
+                <div class="toolmenu" style="display:none" id="tool_manage_cup">
+                    <ul>
+                        <span class="arrow" style="right: 20px;"></span>
+                        <li class="label">Asian</li>
+                        <li>
+                            <a href="/admin/798">
+                                <p>Competiton info</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/798#apply">
+                                <p>Registration management</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/798#card">
+                                <p>Card Management</p>
+                            </a>
+                        </li>
+                        <li class="label">My competitions</li>
+                        <li>
+                            <a href="/ego">
+                                <p>M League</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/egoasian">
+                                <p>Asian</p>
+                            </a>
+                        </li>
+
+
+                        <li class="separator"></li>
+                        <li>
+                            <a href="/cup/open">
+                                <p>Create competition</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="match_info_wrapper"
+        style="position:absolute;z-index:1000;width: 100%;top: 0;bottom:0;background-color: rgba(0,0,0,0.3);display:none;">
+        <div class="layer-form-wrap">
+            <div class="layer-nav">
+                <div class="left">
+                    Reject </div>
+                <h3>Create match</h3>
+            </div>
+            <div class="layer-content">
+                <form class="layer-form">
+                    <fieldset>
+
+                        <div>
+                            <label class="form-label">HOME</label>
+                            <p class="form-select">
+                                <select id="h_team_id">
+                                    <option value="0">Undefined</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div>
+                            <label class="form-label">AWAY</label>
+                            <p class="form-select">
+                                <select id="a_team_id">
+                                    <option value="0">Undefined</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div id="match_info_select_wrapper">
+                            <label class="form-label">Date</label>
+                            <p class="form-select">
+                                <select id="date_y" data-init="2016">
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <p class="form-select">
+                                <select id="date_m" data-init="09">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <p class="form-select">
+                                <select id="date_d" data-init="05">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Time</label>
+                            <p class="form-select">
+                                <select id="date_h">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04" selected="">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <p class="form-select">
+                                <select id="date_i">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                    <option value="37">37</option>
+                                    <option value="38">38</option>
+                                    <option value="39">39</option>
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                    <option value="48">48</option>
+                                    <option value="49">49</option>
+                                    <option value="50" selected="">50</option>
+                                    <option value="51">51</option>
+                                    <option value="52">52</option>
+                                    <option value="53">53</option>
+                                    <option value="54">54</option>
+                                    <option value="55">55</option>
+                                    <option value="56">56</option>
+                                    <option value="57">57</option>
+                                    <option value="58">58</option>
+                                    <option value="59">59</option>
+                                </select>
+                            </p>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Location</label>
+                            <p class="form-select">
+                                <select id="stadium_nm">
+                                    <option value="">Input manually</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <input type="text" placeholder="Location" id="location">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Main referee</label>
+                            <p class="form-select sel-ref">
+                                <select id="sel_ref1">
+                                    <option value="">Input manually</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <input type="text" placeholder="Main referee" id="referee_1">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Sub referee</label>
+                            <p class="form-select sel-ref">
+                                <select id="sel_ref2">
+                                    <option value="">Input manually</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <input type="text" placeholder="Sub referee" id="referee_2">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Recorder</label>
+                            <p class="form-select sel-ref">
+                                <select id="sel_rec">
+                                    <option value="">Input manually</option>
+                                </select>
+                            </p>
+                            <p class="space20"></p>
+                            <input type="text" placeholder="Recorder" id="recorder">
+                        </div>
+
+                        <div>
+                            <label class="form-label">Memo</label>
+                            <textarea id="memo"></textarea>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="layer-bottom-btn right">
+                <a class="btn submit-layer btn-red" href="#" id="btn_submit_match">Save</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".sel-ref select").change(function () {
+                if ($(this).val() != "") {
+                    $(this).parent().parent().find("input[type=text]").val($(this).val());
+                }
+            });
+            $("#match_info_wrapper").click(function () {
+                $("#match_info_wrapper").hide();
+            });
+            $("#match_info_wrapper .layer-form-wrap").click(function (e) {
+                e.stopPropagation();
+            });
+            $("#btn_create_match").click(function () {
+                $("#match_info_select_wrapper select").each(function () {
+                    $(this).val($(this).data("init"));
+                });
+                $("#match_info_wrapper").height($("body").height());
+                $("#match_info_wrapper").show();
+                $("body").scrollTop(0);
+                return false;
+            });
+            $("#match_info_wrapper .left").click(function () {
+                $("#match_info_wrapper").hide();
+                return false;
+            });
+
+            $(".cup-manage").click(function () {
+                $("#tool_manage_cup").toggle();
+                return false;
+            });
+            $(document).click(function () {
+                $("#tool_manage_cup").hide();
+            });
+
+
+            $("#stadium_nm").change(function () {
+                if ($("#stadium_nm option").index($("#stadium_nm option:selected")) == 0)
+                    $("#location").show();
+                else
+                    $("#location").hide();
+            });
+
+            window.match_id = 0;
+            $("#btn_submit_match").click(function () {
+                var time = $("#date_y").val() + "-" + $("#date_m").val() + "-" + $("#date_d").val() + " " + $("#date_h").val() + ":" + $("#date_i").val() + ":00";
+                $.ajax({
+                    url: (match_id > 0 ? "/api/match/update_info/" + match_id : "/api/match/create/798"),
+                    dataType: "json",
+                    data: {
+                        h_team_id: $("#h_team_id").val(),
+                        a_team_id: $("#a_team_id").val(),
+                        schedule: time,
+                        stadium_id: 0,
+                        "location": ($("#stadium_nm option").index($("#stadium_nm option:selected")) == 0 ? $("#location").val() : $("#stadium_nm").val()),
+                        referee_1: $("#referee_1").val(),
+                        referee_2: $("#referee_2").val(),
+                        recorder: $("#recorder").val(),
+                        memo: $("#memo").val(),
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        if (data.code != 0) {
+                            if (match_id > 0)
+                                alert("An error occured on modifying match.");
+                            else
+                                alert("An error occured on creating match");
+                            return;
+                        }
+
+                        if (match_id > 0) {
+                            alert("Modified");
+                        }
+                        else {
+                            alert("Success");
+                        }
+
+                        location.href = "/match/detail/" + data.result.match_id;
+                    }
+                });
+                return false;
+
+            });
+        });
+    </script>
+    <div class="cover-wrap">
+        <div class="cover" style="background-image: url('http://cdn.footplr.com/img/fpcup/cover_sample.jpg')">
+            <div class="cover-shadow">
+                <div class="cover-shadow-bottom">
+                </div>
+                <div id="header">
+                    <a class="header-tool" onclick="$('#sharemenu').toggle()">
+                        <span class="icon share">Share</span>
+                    </a>
+                    <div class="toolmenu" style="display:none" id="sharemenu">
+                        <ul>
+                            <span class="arrow" style="right: 6px;"></span>
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://cup.footplr.com/egoasian"
+                                    target="_blank">
+                                    <span class="icon fb">Share</span>
+                                    <p>Facebook</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/share?url=http://cup.footplr.com/egoasian&amp;text=Asian"
+                                    target="_blank"><span class="icon twt">Share</span>
+                                    <p>Twitter</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" id="kakao-link-btn"><span class="icon kakao">Share</span>
+                                    <p>Kakaotalk</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cover-profile">
+                    <!--
+                        <div class="profile-photo">
+                            <img src="/img/profile_sample.jpg">
+                        </div>
+                        -->
+                    <h2 style="font-size:1.5em;">Asian</h2>
+                </div>
+
+                <div class="tabbar team">
+                    <a class="tab selected" href="/egoasian">Schedule</a>
+                    <a class="tab " href="/egoasian/tournament">Tournament</a>
+                    <a class="tab " href="/egoasian/rank/goal">TopScorers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="content">
+            <ul>
+
+                <div class="fixture-index tournament">
+                    <span>Round of 32</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11075'" data-match-id="11075">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11076'" data-match-id="11076">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11077'" data-match-id="11077">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11078'" data-match-id="11078">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11079'" data-match-id="11079">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11080'" data-match-id="11080">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11081'" data-match-id="11081">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11082'" data-match-id="11082">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11083'" data-match-id="11083">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11084'" data-match-id="11084">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11085'" data-match-id="11085">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11086'" data-match-id="11086">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11087'" data-match-id="11087">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11088'" data-match-id="11088">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11089'" data-match-id="11089">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11090'" data-match-id="11090">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="fixture-index tournament">
+                    <span>Round of 16</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11067'" data-match-id="11067">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11068'" data-match-id="11068">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11069'" data-match-id="11069">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11070'" data-match-id="11070">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11071'" data-match-id="11071">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11072'" data-match-id="11072">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11073'" data-match-id="11073">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11074'" data-match-id="11074">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="fixture-index tournament">
+                    <span>Round of 8</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11063'" data-match-id="11063">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11064'" data-match-id="11064">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11065'" data-match-id="11065">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11066'" data-match-id="11066">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="fixture-index tournament">
+                    <span>Round of 4</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11061'" data-match-id="11061">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="fixture" onclick="location.href='/match/detail/11062'" data-match-id="11062">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <div class="fixture-index tournament">
+                    <h5>Final</h5>
+                    <span class="date" data-schedule="2030-01-01 00:00:00">Jan 1st Tuesday</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11059'" data-match-id="11059">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <div class="fixture-index tournament">
+                    <h5>Third place playoff</h5>
+                    <span class="date" data-schedule="2030-01-01 00:00:00">Jan 1st Tuesday</span>
+                </div>
+
+                <li class="fixture" onclick="location.href='/match/detail/11060'" data-match-id="11060">
+                    <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+                    <div class="score-board">
+                        <div class="home">
+                            <span>Undefined</span>
+                        </div>
+                        <div class="time">
+                            00:00 </div>
+                        <div class="away">
+                            <span>Undefined</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".date").each(function () {
+                        var s = moment($(this).data("schedule"));
+                        $(this).html(s.format('MMM Do dddd'));
+                    });
+                    $(".match-info").each(function () {
+                        var s = moment($(this).data("schedule"));
+                        var _tmp = $(this).html().split("/");
+                        $(this).html(s.format("MMM Do (ddd) HH:mm") + " / " + $.trim(_tmp[1]));
+                    });
+                });
+            </script>
+        </div>
+        <div class="footer">
+            <div class="footer-list">
+                <ul>
+                    <li class="selected"><a href="/egoasian?lang=EN">ENGLISH</a></li>
+                    <li><a href="/egoasian?lang=KO">한국어</a></li>
+                    <li><a href="/egoasian?lang=JA">日本語</a></li>
+                    <li>|</li>
+                    <li><a href="/auth/logout">Logout</a></li>
+                    <li><a href="http://footplr.com">APP</a></li>
+                    <li><a href="mailto:contact@footplr.com">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="copylight">
+                © FOOTPLR 2015
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.footplr.com/js/moment-with-locales.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript">
+        moment.locale('en');
+        $(document).ready(function () {
+
+            // 사용할 앱의 Javascript 키를 설정해 주세요.
+            Kakao.init('3d2499445e74be030288182eb782871e');
+            Kakao.Link.createTalkLinkButton({
+                container: '#kakao-link-btn',
+                label: 'Asian',
+                /*
+            image: {
+            src: 'https://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
+            width: '300',
+            height: '200'
+            },*/
+                webButton: {
+                    text: 'Asian',
+                    url: 'http://cup.footplr.com/egoasian' // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
+                }
+            });
+
+        });
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-37329864-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+</body>
+
+</html>
