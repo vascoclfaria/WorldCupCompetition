@@ -41,14 +41,14 @@ switch (file) {
             var password = document.getElementById('password').value;
             playersRef.once("value", function(snapshot){
                 var users = snapshot.val();
-                var isValidUser = false;
+                var isValidUser = true;
                 for(let i in users){
                     if(users[i].username == username && users[i].password == password){
                         localStorage.setItem("username", username);
                         localStorage.setItem("password", password);
                         window.location.href="index.html";
                         document.getElementById('login').submit();
-                        isValidUser = true
+                        isValidUser = false
                     }
                 }
                 if (isValidUser){
@@ -89,8 +89,38 @@ switch (file) {
                 bets : bets
             })
         });
+
+         //add new game to competition
+         document.getElementById('gameForm').addEventListener('submit', function(e){
+            e.preventDefault(); //stop form from submitting
+
+            var home = document.getElementById('home').value;
+            var away = document.getElementById('away').value;
+            var info = document.getElementById('info').value;
+            var phase = document.getElementById('phase').value;
+
+            console.log(username, password);
+            var ref = firebase.database().ref('World Cup Competition/'.concat(phase))
+            var game = wccDB.push();
+            game.set({
+                home : home,
+                away : away,
+                info : info,
+                score : ""
+            })
+        });
       break;
     case 'index.html':
+        //add all the games in the DB
+        wccDB.once("value", function(snapshot){
+            var users = snapshot.val();
+            var isValidUser = true;
+            for(let i in users){
+               console.log(i)
+            }
+        })
+
+
         //add participant name to welcome page
         console.log(localStorage.getItem("username"));
         document.getElementById("AQUI").innerHTML = localStorage.getItem("username");

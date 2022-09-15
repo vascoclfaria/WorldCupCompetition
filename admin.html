@@ -34,11 +34,11 @@
   <section class="admin_section">
     <h1>Add Participant</h1>
     <form action="" id="participantForm">
-        <label for="fname">username</label><br>
-        <input type="text" id="username"><br>
-        <label for="lname">password</label><br>
-        <input type="text" id="password"><br><br>
-        <button type="submit">Submit</button> 
+      <label for="fname">username</label><br>
+      <input type="text" id="username"><br>
+      <label for="lname">password</label><br>
+      <input type="text" id="password"><br><br>
+      <button type="submit">Submit</button>
     </form>
     <hr class="solid">
   </section>
@@ -46,26 +46,37 @@
   <section class="admin_section">
     <h1>Add Game</h1>
     <form action="" id="gameForm">
-      <label for="fname">team1</label><br>
-      <input list="browsers" id="username"><br>
-          <datalist id="browsers">
-            <option value="PORTUGAL">
-            <option value="SÉRVIA">
-            <option value="REPÚBLICA DA IRLANDA">
-            <option value="Opera">
-            <option value="Safari">
-            <option value="Microsoft Edge">
-          </datalist>
-        <label for="lname">team2</label><br>
-        <input type="text" id="password"><br><br>
-        <button type="submit">Submit</button> 
+      <label>Home</label><br>
+      <input id="home" list="teams"><br>
+      <label>Away</label><br>
+      <input id="away" list="teams"><br>
+      <datalist id="teams">
+        <option value="PORTUGAL">
+        <option value="SÉRVIA">
+        <option value="REPÚBLICA DA IRLANDA">
+        <option value="Opera">
+        <option value="Safari">
+        <option value="Microsoft Edge">
+      </datalist>
+      <label>Mach INFO</label><br>
+      <input id="info" type="text"><br>
+      <label>Competition Phase</label><br>
+      <input id="phase" list="phases"><br><br> 
+      <datalist id="phases">
+        <option value="Fase de Grupos">
+        <option value="Oitavos">
+        <option value="Quartos">
+        <option value="Semi-Final">
+        <option value="Final">
+      </datalist>
+      <button type="submit">Submit</button>
     </form>
     <hr class="solid">
   </section>
 
   <section>
     <form action="" id="scoreForm">
-        <!-- TODO: add game and then the correspondent result -->
+      <!-- TODO: add game and then the correspondent result -->
     </form>
   </section>
 
