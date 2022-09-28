@@ -115,7 +115,7 @@
           <div class="fixture-index tournament">
             <span>Fase de Grupos</span>
           </div> <!-- location.href='index.html' -->
-          <div class="fixture" onclick="goToGame();" data-match-id="11076">
+          <div id="game1" class="fixture" onclick="goToGame();" data-match-id="11076">
             <div class="score-board">
               <div class="home">
                 <div><img class="team-img" src="images/Countries/Portugal.png"></div>
@@ -135,11 +135,11 @@
             </div>
           </div>
           <hr />
-          <div class="fixture" onclick="goToGame();" data-match-id="11076">
+          <div id="game2" class="fixture" onclick="goToGame(this.id);" data-match-id="11076">
             <div class="score-board">
               <div class="home">
                 <div><img class="team-img" src="images/Countries/Portugal.png"></div>
-                <div><span id="home_team">Portugal</span></div>
+                <div><span id="home_team">fdgnfh</span></div>
               </div>
               <div>
                 <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
@@ -151,13 +151,13 @@
               </div>
               <div class="away">
                 <div><img class="team-img" src="images/Countries/Espanha.png"></div>
-                <div><span id="away_team">Espanha</span>
+                <div><span id="away_team">esgrhtj</span>
                 </div>
               </div>
             </div>
           </div>
           <hr />
-          <div class="fixture" onclick="goToGame();" data-match-id="11076">
+          <div id="game3" class="fixture" onclick="goToGame();" data-match-id="11076">
             <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
             <div class="score-board">
               <div class="home">
@@ -188,6 +188,40 @@
   </section>
   <!-- footer section -->
 
+  <div class="popup">
+    <!-- <h2>Automatic Pop-Up</h2>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita distinctio fugiat alias iure qui, commodi minima
+      magni ullam aliquam dignissimos?
+    </p>
+    <a href="#">Let's Go</a> -->
+    <form>
+      <div class="fixture">
+        <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
+        <div class="score-board">
+          <div class="home">
+            <div><img class="team-img" src=""></div>
+            <div><span id="home_team_popup"></span></div>
+          </div>
+          <div class="score">
+            <div class="row">
+              <input type="number" id="" class="noscroll" style="float:left; width:33%;"><br>
+              <h1 style="float:left; width:33%;">-</h1>
+              <input type="number" id="" class="noscroll" style="float:left; width:33%;"><br>
+            </div>
+          </div>
+          <div class="away">
+            <div><img class="team-img" src=""></div>
+            <div><span id="away_team_popup"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
@@ -196,14 +230,69 @@
 
   <script>
     function goToGame() {
+      document.getElementById("empty").classList.add('empty'); //change background opacity
+
       let home = document.getElementById("home_team").innerHTML;
       let away = document.getElementById("away_team").innerHTML;
 
-      let game = home.concat("_", away);
-      localStorage.setItem("game", game);
-      window.location.href = "index.html";
+      document.getElementById("home_team_popup").innerHTML = home;
+      document.getElementById("away_team_popup").innerHTML = away;
+
+      // let game = home.concat("_", away);
+      // localStorage.setItem("game", game);
+      //window.location.href = "index.html";
+
+      document.querySelector(".popup").style.display = "block";
     }
   </script>
+
+<script>
+  function goToGame(clickedID){
+    document.getElementById("empty").classList.add('empty'); //change background opacity
+
+    // let home = document.getElementById("home_team").innerHTML;
+    // let away = document.getElementById("away_team").innerHTML;
+
+    let home = document.getElementById(clickedID).getElementById("home_team");
+    let away = document.getElementById(clickedID).getElementById("away_team");
+
+    
+    
+
+    document.getElementById("home_team_popup").innerHTML = home;
+    document.getElementById("away_team_popup").innerHTML = away;
+
+    // let game = home.concat("_", away);
+    // localStorage.setItem("game", game);
+    //window.location.href = "index.html";
+
+    document.querySelector(".popup").style.display = "block";
+  }
+
+  function exitGame(){
+    if(document.getElementById("empty").classList.contains("empty")){
+      document.getElementById("empty").classList.remove('empty');
+      document.querySelector(".popup").style.display = "none";
+    }
+  }
+</script>
+
+
+  <!-- <script type="text/javascript">
+    window.addEventListener("load", function () {
+      setTimeout(
+        function open(event) {
+          document.querySelector(".popup").style.display = "block";
+        },
+        2000
+      )
+    });
+
+
+    document.querySelector("#close").addEventListener("click", function () {
+      document.querySelector(".popup").style.display = "none";
+    });
+  </script> -->
 
   <!-- <script>
     window.onbeforeunload = function() {
@@ -221,6 +310,7 @@
     });
   </script> -->
 
+  <div id="empty" onclick="exitGame();"></div>
 </body>
 
 </html>
