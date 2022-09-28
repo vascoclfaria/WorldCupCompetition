@@ -22,6 +22,7 @@
   font-weight: bold;
 }
 
+
 h1,
 h2,
 h3 {
@@ -243,7 +244,7 @@ a:focus {
 
 
 .about_section .about_container {
-  width: 85%;
+  width: 65%;
   margin-left: auto;
   margin-right: auto;
   /* padding: 75px 45px; */
@@ -270,6 +271,11 @@ a:focus {
 /* .about_section .about_container .container > div {
   width: 46%;
 } */
+
+.center{
+  display: grid;
+  place-items: center;
+}
 
 .about_section .team-img{
   border-radius: 50%;
@@ -317,13 +323,13 @@ a:focus {
 }
 
 .fixture .home {
-  text-align: right;
-  padding-right: 50px;
+  text-align: center;
+  /* padding-right: 50px; */
 }
 
 .fixture .away {
-  text-align: left;
-  padding-left: 50px;
+  text-align: center;
+  /* padding-left: 50px; */
 }
 
 .fixture .score {
@@ -435,6 +441,10 @@ input[type=number]::-webkit-inner-spin-button {
     border: none;
     outline: none;
     cursor: pointer; */
+}
+
+.popup .fixture {
+  cursor: default;
 }
 
 

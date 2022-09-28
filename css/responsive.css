@@ -17,6 +17,10 @@
 }
 
 @media (max-width: 768px) {
+    .hero_area {
+        height: 68vh;
+    }
+
     .about_section .about_container .container {
         flex-direction: column;
     }
@@ -79,6 +83,10 @@
 }
 
 @media (max-width: 576px) {
+    .hero_area {
+        height: 38vh;
+    }
+
     .hero_section h1 {
         font-size: 58px;
     }
@@ -122,9 +130,17 @@
     }
 }
 
-@media (max-width: 420px) {}
+@media (max-width: 420px) {
+    .hero_area {
+        height: 28vh;
+    }
+}
 
-@media (max-width: 360px) {}
+@media (max-width: 360px) {
+    .hero_area {
+        height: 28vh;
+    }
+}
 
 @media (min-width: 1200px) {
     .container {

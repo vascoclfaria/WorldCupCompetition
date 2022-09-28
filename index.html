@@ -2,315 +2,121 @@
 <html>
 
 <head>
-  <title>WorldCup Competition</title>
-  <!-- Favicon -->
-  <link href="images/favicon.ico" rel="icon">
-
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+    <title>Beachly - Login</title>
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Google fonts CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <script src="https://kit.fontawesome.com/d974e5062b.js" crossorigin="anonymous"></script>
+    <!-- Icon of page -->
+    <link rel="shortcut icon" href="imgs/favicon-32x32.png">
 
 
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
-<body>
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/2022_FIFA_World_Cup.png" alt="" />
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<body id="body" style="opacity: 0;">
+    <video autoplay muted loop id="myVideo">
+        <source src="video/World Cup Qatar 2022 Promo.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"> Games </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="product.html"> Score </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-    <!-- hero section -->
-    <section class="hero_section ">
-      <!--d-none-->
-      <div class="hero_detail">
-        <h1>
-          <span>
-            h
-          </span>
-          <span>
-            e
-          </span>
-          <span>
-            r
-          </span>
-          <span>
-            b
-          </span>
-          <span>
-            a
-          </span>
-          <span>
-            l
-          </span>
-        </h1>
-        <h3 id="AQUI">
-          Natural product
-          </h2>
-      </div>
-      <div class="hero_btn-box">
-        <a href="">
-          Contact Us
-        </a>
-      </div>
-    </section>
-    <!-- end hero section -->
-  </div>
-  <!-- end hero area -->
+    <div class="login">
+        <div class="left">
+            <h3>Log in to your account</h3>
 
-  <section class="about_section layout_padding mt-4">
-    <div class="about_container">
-      <div class="container">
-        <!-- <form action="" id="betForm">
-          <label for="fname">PORTUGAL</label><br>
-          <input type="number" id="team1" name="team1" value="0"><br>
-          <label for="lname">ESPANHA</label><br>
-          <input type="number" id="team2" name="team2" value="0"><br><br>
-          <button type="submit">Submit</button> 
-        </form> -->
-        <div>
-          <div class="fixture-index tournament">
-            <span>Fase de Grupos</span>
-          </div> <!-- location.href='index.html' -->
-          <div id="game1" class="fixture" onclick="goToGame();" data-match-id="11076">
-            <div class="score-board">
-              <div class="home">
-                <div><img class="team-img" src="images/Countries/Portugal.png"></div>
-                <div><span id="home_team">Portugal</span></div>
-              </div>
-              <div>
-                <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
-                <div class="score">2-0</div>
-                <div class="match-info">APOSTA</div>
-                <div class="" style="text-align: center;">2-0</div>
-              </div>
-              <div class="away">
-                <div><img class="team-img" src="images/Countries/Espanha.png"></div>
-                <div><span id="away_team">Espanha</span>
-                </div>
-              </div>
+            <form id="gameForm" action="home.html" class="login-form">
+                <label class="input">
+                    <span>Email address</span>
+                    <input id="email" class="input" type="email" placeholder="Enter your email address" />
+                </label>
+                <label class="input">
+                    <span>Password</span>
+                    <div class="input">
+                        <input id="password" type="password" placeholder="Enter your password" />
+                        <button id="btn_eye" class="btn-search far fa-eye-slash" onclick="changeInputType()"></button>
+                    </div>
+                </label>
+            </form>
+
+            <div class="left-footer">
+                <span>Don’t have an account? </span>
+                <a href="#" class="sign">Sign up</a>
             </div>
-          </div>
-          <hr />
-          <div id="game2" class="fixture" onclick="goToGame(this.id);" data-match-id="11076">
-            <div class="score-board">
-              <div class="home">
-                <div><img class="team-img" src="images/Countries/Portugal.png"></div>
-                <div><span id="home_team">fdgnfh</span></div>
-              </div>
-              <div>
-                <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
-                <div class="score d-none">2-0</div>
-                <div class="d-none">
-                  <div class="match-info">APOSTA</div>
-                  <div class="" style="text-align: center;">2-0</div>
+
+            <div class="container mt-3">
+                <div class="row justify-content-center">
+                    <a href="#" class="btn-login google">
+                        <i class="fab fa-google"></i>
+                    </a>
+
+                    <a href="#" class="btn-login facebook">
+                        <i class="fab fa-facebook-square" style="width: 100%; height: 100%; color: #4285f4;"></i>
+                    </a>
                 </div>
-              </div>
-              <div class="away">
-                <div><img class="team-img" src="images/Countries/Espanha.png"></div>
-                <div><span id="away_team">esgrhtj</span>
-                </div>
-              </div>
             </div>
-          </div>
-          <hr />
-          <div id="game3" class="fixture" onclick="goToGame();" data-match-id="11076">
-            <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
-            <div class="score-board">
-              <div class="home">
-                <div><img class="team-img" src="images/Countries/Portugal.png"></div>
-                <div><span id="home_team">Portugal</span></div>
-              </div>
-              <div class="score">2-0</div>
-              <div class="away">
-                <div><img class="team-img" src="images/Countries/Espanha.png"></div>
-                <div><span id="away_team">Espanha</span>
-                </div>
-              </div>
+
+            <div class="diveder">
+                <hr />
+                <span>Or</span>
+                <hr />
             </div>
-          </div>
+
+            <form action="Beachly.html">
+                <button class="continue">Continue as Guest</button>
+            </form>
         </div>
-      </div>
+
+        <div class="right">
+            <img class="mx-auto d-block" src="images/2022_FIFA_World_Cup.png" width="150" height="187">
+            <div class="text">
+                <h5>Seamless data tiering with Online Archive</h5>
+                <p>Offload aged data from your cluster to a lower-cost, queryable storage tier. Create an Online Archive to start saving on storage costs.</p>
+            </div>
+        </div>
     </div>
-  </section>
-  <!-- end about section -->
-
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p><small>
-        &copy; 2019 All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
-      </small>
-    </p>
-  </section>
-  <!-- footer section -->
-
-  <div class="popup">
-    <!-- <h2>Automatic Pop-Up</h2>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita distinctio fugiat alias iure qui, commodi minima
-      magni ullam aliquam dignissimos?
-    </p>
-    <a href="#">Let's Go</a> -->
-    <form>
-      <div class="fixture">
-        <div class="match-info" data-schedule="2030-01-01 00:00:00">Jan 1st (Tue) 00:00 / </div>
-        <div class="score-board">
-          <div class="home">
-            <div><img class="team-img" src=""></div>
-            <div><span id="home_team_popup"></span></div>
-          </div>
-          <div class="score">
-            <div class="row">
-              <input type="number" id="" class="noscroll" style="float:left; width:33%;"><br>
-              <h1 style="float:left; width:33%;">-</h1>
-              <input type="number" id="" class="noscroll" style="float:left; width:33%;"><br>
-            </div>
-          </div>
-          <div class="away">
-            <div><img class="team-img" src=""></div>
-            <div><span id="away_team_popup"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button type="submit">Save</button>
-    </form>
-  </div>
-
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-  <script src="js/firebase.js"></script>
-
-  <script>
-    function goToGame() {
-      document.getElementById("empty").classList.add('empty'); //change background opacity
-
-      let home = document.getElementById("home_team").innerHTML;
-      let away = document.getElementById("away_team").innerHTML;
-
-      document.getElementById("home_team_popup").innerHTML = home;
-      document.getElementById("away_team_popup").innerHTML = away;
-
-      // let game = home.concat("_", away);
-      // localStorage.setItem("game", game);
-      //window.location.href = "index.html";
-
-      document.querySelector(".popup").style.display = "block";
-    }
-  </script>
+</body>
 
 <script>
-  function goToGame(clickedID){
-    document.getElementById("empty").classList.add('empty'); //change background opacity
-
-    // let home = document.getElementById("home_team").innerHTML;
-    // let away = document.getElementById("away_team").innerHTML;
-
-    let home = document.getElementById(clickedID).getElementById("home_team");
-    let away = document.getElementById(clickedID).getElementById("away_team");
-
-    
-    
-
-    document.getElementById("home_team_popup").innerHTML = home;
-    document.getElementById("away_team_popup").innerHTML = away;
-
-    // let game = home.concat("_", away);
-    // localStorage.setItem("game", game);
-    //window.location.href = "index.html";
-
-    document.querySelector(".popup").style.display = "block";
-  }
-
-  function exitGame(){
-    if(document.getElementById("empty").classList.contains("empty")){
-      document.getElementById("empty").classList.remove('empty');
-      document.querySelector(".popup").style.display = "none";
+    function changeInputType() {
+        var x = document.getElementById("input_pass");
+        let eye = document.getElementById("btn_eye");
+        if (x.type === "password") {
+            x.type = "text";
+            eye.classList.remove("fa-eye-slash");
+            eye.classList.add("fa-eye");
+        } else {
+            x.type = "password";
+            eye.classList.remove("fa-eye");
+            eye.classList.add("fa-eye-slash");
+        }
     }
-  }
 </script>
 
+<script type="text/javascript">
+    var opacity = 0;
+    var intervalID = 0;
+    window.onload = fadeIn;
 
-  <!-- <script type="text/javascript">
-    window.addEventListener("load", function () {
-      setTimeout(
-        function open(event) {
-          document.querySelector(".popup").style.display = "block";
-        },
-        2000
-      )
-    });
+    function fadeIn() {
+        setInterval(show, 100);
+    }
 
-
-    document.querySelector("#close").addEventListener("click", function () {
-      document.querySelector(".popup").style.display = "none";
-    });
-  </script> -->
-
-  <!-- <script>
-    window.onbeforeunload = function() {
-      // localStorage.removeItem("username");
-      // localStorage.removeItem("password");
-      alert("vais perder tudo");
-      localStorage.clear();
-      return '';
-    };
-  </script>
-
-  <script>
-    window.addEventListener('popstate', function (event) {
-      history.pushState(null, document.title, location.href);
-    });
-  </script> -->
-
-  <div id="empty" onclick="exitGame();"></div>
-</body>
+    function show() {
+        var body = document.getElementById("body");
+        opacity = Number(body.style.opacity);
+        console.log(opacity);
+        if (opacity < 1) {
+            opacity = opacity + 0.1;
+            console.log(opacity);
+            body.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }
+</script>
 
 </html>

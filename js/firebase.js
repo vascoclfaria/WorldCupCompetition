@@ -32,12 +32,12 @@ var path = window.location.pathname;
 var file = path.split("/").pop();
 //console.log(file);
 switch (file) {
-    case 'contact.html':
+    case 'index.html':
         //authenticade player
         document.getElementById('login').addEventListener('submit', function(e){
             e.preventDefault(); //stop form from submitting
 
-            var username = document.getElementById('username').value;
+            var username = document.getElementById('email').value;
             var password = document.getElementById('password').value;
             playersRef.once("value", function(snapshot){
                 var users = snapshot.val();
@@ -110,7 +110,7 @@ switch (file) {
             })
         });
       break;
-    case 'index.html':
+    case 'home.html':
         //add all the games in the DB
         wccDB.once("value", function(snapshot){
             var users = snapshot.val();
