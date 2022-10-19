@@ -30,7 +30,7 @@
         <div class="left">
             <h3>Log in to your account</h3>
 
-            <form id="loginForm" action="home.html" class="login-form">
+            <form id="loginForm" class="login-form">
                 <label class="input">
                     <span>Email address</span>
                     <input id="email" class="input" type="email" placeholder="Enter your email address" />
@@ -42,7 +42,7 @@
                         <button id="btn_eye" class="btn-search far fa-eye-slash" onclick="changeInputType()"></button>
                     </div>
                 </label>
-                <button id="test" class="sign">Log in</a></button>
+                <button id="test" class="submit">Log in</a></button>
             </form>
 
             <div class="left-footer">
@@ -50,7 +50,7 @@
                 <a href="register.html" class="sign">Sign up</a>
             </div>
 
-            <div class="container mt-3">
+            <!-- <div class="container mt-3">
                 <div class="row justify-content-center">
                     <a href="#" class="btn-login google">
                         <i class="fab fa-google"></i>
@@ -60,17 +60,7 @@
                         <i class="fab fa-facebook-square" style="width: 100%; height: 100%; color: #4285f4;"></i>
                     </a>
                 </div>
-            </div>
-
-            <div class="diveder">
-                <hr />
-                <span>Or</span>
-                <hr />
-            </div>
-
-            <form action="register.html">
-                <button class="continue">Sign Up</button>
-            </form>
+            </div> -->
         </div>
 
         <div class="right">
@@ -82,6 +72,10 @@
         </div>
     </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/general.js"></script>
 
 <script>
     function changeInputType() {
