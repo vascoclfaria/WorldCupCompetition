@@ -14,10 +14,8 @@
     <link rel="shortcut icon" href="imgs/favicon-32x32.png">
 
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body id="body" style="opacity: 0;">
@@ -30,7 +28,7 @@
         <div class="left">
             <h3>Log in to your account</h3>
 
-            <form id="loginForm" class="login-form">
+            <form id="registerForm" action="#" class="login-form">
                 <label class="input">
                     <span>Email address</span>
                     <input id="email" class="input" type="email" placeholder="Enter your email address" />
@@ -42,34 +40,7 @@
                         <button id="btn_eye" class="btn-search far fa-eye-slash" onclick="changeInputType()"></button>
                     </div>
                 </label>
-                <button id="test" class="sign">Log in</a></button>
-            </form>
-
-            <div class="left-footer">
-                <span>Don’t have an account? </span>
-                <a href="register.html" class="sign">Sign up</a>
-            </div>
-
-            <div class="container mt-3">
-                <div class="row justify-content-center">
-                    <a href="#" class="btn-login google">
-                        <i class="fab fa-google"></i>
-                    </a>
-
-                    <a href="#" class="btn-login facebook">
-                        <i class="fab fa-facebook-square" style="width: 100%; height: 100%; color: #4285f4;"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="diveder">
-                <hr />
-                <span>Or</span>
-                <hr />
-            </div>
-
-            <form action="register.html">
-                <button class="continue">Sign Up</button>
+                <button class="submit">Register</button>
             </form>
         </div>
 
@@ -111,10 +82,10 @@
     function show() {
         var body = document.getElementById("body");
         opacity = Number(body.style.opacity);
-        //console.log(opacity);
+        console.log(opacity);
         if (opacity < 1) {
             opacity = opacity + 0.1;
-            //console.log(opacity);
+            console.log(opacity);
             body.style.opacity = opacity;
         } else {
             clearInterval(intervalID);

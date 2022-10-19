@@ -147,7 +147,7 @@ input:focus {
     outline: none;
 }
 
-.login .left .continue {
+.login .left .continue, .login .left .submit {
     width: 100%;
     padding: 19px 0px;
     border-radius: 5px;
