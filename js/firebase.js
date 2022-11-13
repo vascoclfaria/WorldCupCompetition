@@ -22,8 +22,6 @@ console.log(file);
 
 // //get username from local storage
 _player = localStorage.getItem("username");
-// //add welcoming message
-// document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
 
 switch (file) {
     case 'index.html':
@@ -63,9 +61,9 @@ switch (file) {
 
 
 
-        //get username from local storage
-        // _player = localStorage.getItem("username");
-        // document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
+        //add welcoming message
+        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
+
 
         //add all the games in the DB to welcome page
         document.getElementById('tables').style.display = "none";
@@ -306,6 +304,9 @@ switch (file) {
         });
         break;
     case 'classification.html':
+        //add welcoming message
+        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
+
         //Create PlayerScores table and fill it with the players 
         let scores_table = document.getElementById('scores_table');
         scores_table.style.display = "none";
@@ -332,6 +333,9 @@ switch (file) {
         });
         break;
     case 'opponentBets.html':
+        //add welcoming message
+        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
+
         //get opponent username
         let oppUsename = localStorage.getItem("oponnent");
 
