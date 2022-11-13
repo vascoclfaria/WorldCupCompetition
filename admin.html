@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WorldCup Competition</title>
+  <!-- Favicon -->
+  <link href="images/favicon.ico" rel="icon">
+
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <section class="admin_section">
+    <h1>Add Game</h1>
+    <form action="" id="gameForm">
+      <label>Home</label><br>
+      <input id="home" list="teams"><br>
+      <label>Away</label><br>
+      <input id="away" list="teams"><br>
+      <datalist id="teams">
+        <option value="Qatar">
+        <option value="Equador">
+        <option value="Senegal">
+        <option value="Holanda">
+        <option value="Inglaterra">
+        <option value="EUA">
+        <option value="País de Gales">
+        <option value="Argentina">
+        <option value="Arábia Saudita">
+        <option value="México">
+        <option value="Polônia">
+        <option value="França">
+        <option value="Austrália">
+        <option value="Dinamarca">
+        <option value="Tunísia">
+        <option value="Espanha">
+        <option value="Costa Rica">
+        <option value="Alemanha">
+        <option value="Japão">
+        <option value="Bélgica">
+        <option value="Canadá">
+        <option value="Marrocos">
+        <option value="Croácia">
+        <option value="Brasil">
+        <option value="Sérvia">
+        <option value="Suíça">
+        <option value="Camarões">
+        <option value="Portugal">
+        <option value="Gana">
+        <option value="Uruguai">
+        <option value="Coreia do Sul">
+      </datalist>
+      <label>Mach INFO</label><br>
+      <input id="info" type="datetime-local"><br>
+      <label>Competition Phase</label><br>
+      <input id="phase" list="phases"><br><br>
+      <datalist id="phases">
+        <option value="Fase de Grupos">
+        <option value="Oitavos">
+        <option value="Quartos">
+        <option value="Semi-Final">
+        <option value="Final">
+      </datalist>
+      <button type="submit">Submit</button>
+    </form>
+    <hr class="solid mt-3">
+  </section>
+
+  <section class="admin_section">
+    <h1>Add Score to Game</h1>
+    <form action="" id="scoreForm">
+      <!-- TODO: add game and then the correspondent result -->
+      <label>Game</label><br>
+      <input id="game" list="games"><br>
+      <datalist id="games"></datalist>
+      <label>Score</label><br>
+      <input id="score" type="text"><br>
+      <button type="submit">Submit</button>
+      <hr class="solid mt-3">
+    </form>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+  <script src="js/firebase.js"></script>
+</body>
+
+</html>
+
+
+
+<datalist id="teams">
+  <option value="Qatar">
+  <option value="Equador">
+  <option value="Senegal">
+</datalist>

@@ -6,7 +6,6 @@ hamburger.addEventListener('click', () => {
     //Animate Links
     navLinks.classList.toggle("open");
     links.forEach(link => {
-        console.log("ENTREI");
         link.classList.toggle("fade");
     });
 

@@ -47,24 +47,6 @@ switch (file) {
         });
         break;
     case 'home.html':
-        // const query = db.ref("Users").orderByChild("points");
-        // query.on("value", function (snapshot) {
-        //     var q = snapshot.val();
-        //     var arr = [];
-        //     for(let ele in q){
-        //         arr.push(q[ele]);
-        //     }
-        //     // arr.push(q);
-        //     arr.sort((a, b) => (a.points < b.points ? 1 : -1));
-        //     console.log("Query: ", arr);
-        // });
-
-
-
-        //add welcoming message
-        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
-
-
         //add all the games in the DB to welcome page
         document.getElementById('tables').style.display = "none";
         gamesDB.once("value", function (snapshot) {
@@ -83,11 +65,6 @@ switch (file) {
                             var gameID = p.charAt(0) + "_game" + Object.keys(games).indexOf(g);
                             var playerBet = getPlayerBet(game.bets, _player);
                             // console.log(gameID, ": ", playerBet)
-
-                            // setDate(game);
-                            // matchesArray.sort(function (a, b) {
-                            //     return a - b
-                            // });
 
                             //console.log(gameID, home_team, away_team, match_info, match_score, match_bet, matchesArr);
                             newMatch(posName, gameID, game.home, game.away, game.info, game.score, playerBet, games);
@@ -130,13 +107,13 @@ switch (file) {
                                 console.log(home, home_team, " || ", away, away_team);
 
                                 if (home == home_team && away == away_team) {
-                                    // if (!canBet(new Date(info))) {
-                                    //     alert("O tempo para apostar/alterar aposta terminou");
-                                    // }
-                                    // else if (home_score == "" || away_score == "") {
-                                    //     alert("Aposta inválida");
-                                    // }
-                                    // else {
+                                    if (!canBet(new Date(info))) {
+                                        alert("O tempo para apostar/alterar aposta terminou");
+                                    }
+                                    else if (home_score == "" || away_score == "") {
+                                        alert("Aposta inválida");
+                                    }
+                                    else {
                                         //Update bet in DB World Cup Competition
                                         bets[bet.key] = bet.value;
                                         console.log("AAAAAA:", bets);
@@ -159,7 +136,7 @@ switch (file) {
 
                                         alert("Aposta colocada");
                                         window.location.href = file;
-                                    // }
+                                    }
                                 }
                             });
                         }
@@ -171,7 +148,6 @@ switch (file) {
     case 'admin.html':
         //create datalist of games in DB
         gamesDB.once("value", function (snapshot) {
-            console.log("oioi")
             var phases = snapshot.val();
             for (let p in phases) {
                 gamesDB.child(p).once("value", function (snapshot) {
@@ -186,7 +162,7 @@ switch (file) {
                             option.id = p.replace(/\s/g, "-") + " " + g;
                             list.appendChild(option);
                             
-                            console.log(option.value);
+                            // console.log(option.value);
                         });
                     }
                 });
@@ -231,7 +207,7 @@ switch (file) {
             var phase = id.split(" ")[0].replace(/-/g, ' ');
             var game = id.split(" ")[1];
             var score = document.getElementById('score').value;
-            // console.log("GAME: ", phase, game, score)
+            console.log("GAME: ", phase, game, score)
 
             gamesDB.child(phase).child(game).update({
                 score: score
@@ -249,9 +225,9 @@ switch (file) {
                         var bets = user.bets;
                         // var points = parseInt(user.points);
                         var points = 0;
-
+                        console.log(u)
                         for (b in bets) {
-                            if (b != "GameRef") {
+                            if (b === game) { //if (b != "GameRef") {
                                 var bet = bets[b];
                                 // console.log("Bets: ", bet);
                                 var x = bet.split("-")[0];
@@ -259,17 +235,11 @@ switch (file) {
                                 var sx = score.split("-")[0];
                                 var sy = score.split("-")[1];
                                 // console.log("VALOR: ", Math.abs(x - y), x, y)
+                                console.log("PHASE: ", phase)
                                 let pointsTable = getPointsTable(phase);
                                 console.log(pointsTable)
 
-                                if(correctPrediction(score, bet)){
-                                    // console.log("   bet: ", x + " " + y);
-                                    // console.log("   sco: ", sx + " " + sy);
-                            
-                                    // let pointsTable = getPointsTable(phase);
-                                    // console.log("PHASE1: ", phase);
-                            
-                            
+                                if(correctPrediction(score, bet)){                            
                                     if (x == sx && y == sy) {
                                         points += pointsTable["correct"];
                                     }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo   
@@ -290,6 +260,7 @@ switch (file) {
                                 });
                             }
                         }
+                        console.log("---------------------------------")
 
                     });
                 }
@@ -304,10 +275,7 @@ switch (file) {
         });
         break;
     case 'classification.html':
-        //add welcoming message
-        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
-
-        //Create PlayerScores table and fill it with the players 
+        //create PlayerScores table and fill it with the players 
         let scores_table = document.getElementById('scores_table');
         scores_table.style.display = "none";
 
@@ -333,11 +301,8 @@ switch (file) {
         });
         break;
     case 'opponentBets.html':
-        //add welcoming message
-        document.getElementById("welcomeMsg").innerHTML = "Bem-vindo " + _player;
-
         //get opponent username
-        let oppUsename = localStorage.getItem("oponnent");
+        let oppUsename = localStorage.getItem("opponent");
 
         //Show opponent name at the top
         let oppName = document.getElementById('oppUsername');
@@ -358,17 +323,20 @@ switch (file) {
             var bets = snapshot.val();
             console.log("Apostas: ", bets);
             for(let b in bets){
-                console.log("gameBet",b);
+                // console.log("gameBet",b);
                 gamesDB.once("value", function (snapshot) {
                     var fase = snapshot.val();
-                    console.log("Fase: ", fase);
+                    // console.log("Fase: ", fase);
                     for(let f in fase){
-                        console.log(f);
+                        // console.log(f);
                         gamesDB.child(f).once("value", function (snapshot) {
                             var games = snapshot.val();
-                            console.log("games: ", games);
+                            var gamesKeys = Object.keys(games);
+                            // console.log("games: ", games);
                             for (let g in games) {
+                                console.log(g, gamesKeys[gamesKeys.length - 1])
                                 if(g === b){
+                                    console.log("+1 JOGO ")
                                     count++;
                                     gamesDB.child(f).child(g).once("value", function (snapshot) {
                                         var game = snapshot.val();
@@ -376,22 +344,24 @@ switch (file) {
                                         var playerBet = getPlayerBet(game.bets, oppUsename);
                                         // console.log(gameID, ": ", playerBet)
             
-                                        // setDate(game);
-                                        // matchesArray.sort(function (a, b) {
-                                        //     return a - b
-                                        // });
-            
                                         //console.log(gameID, home_team, away_team, match_info, match_score, match_bet, matchesArr);
                                         if(!canBet(canBet(new Date(game.info)))){
                                             newMatch1(gameID, game.home, game.away, game.info, game.score, playerBet, games);
                                             document.getElementById('tables').style.display = "block";
                                         }
+
+                                        document.getElementById('msg').style.display = "none";
+                                        // console.log(g, gamesKeys[gamesKeys.length - 1])
+                                        // if(g === gamesKeys[gamesKeys.length - 1]){
+                                        //     console.log("SOU O ULTIMO ", count)
+                                        //     document.getElementById('msg').style.display = "block";
+                                        // }
                                     })
+                                }else if(g === gamesKeys[gamesKeys.length - 1] && count == 0){
+                                    console.log("SOU O ULTIMO ", count)
+                                    document.getElementById('msg').style.display = "block";
                                 }   
                             }
-                            if(count == 0)
-                                document.getElementById('msg').style.display = "block";
-
                         });
                     }
                     // console.log("game: ", game);
@@ -512,7 +482,7 @@ function newTableEntry(username, userdata, position){
     if(username != _player){
         row.style.cursor = 'pointer';
         row.onclick = function (event) {
-            localStorage.setItem("oponnent", username);
+            localStorage.setItem("opponent", username);
             window.location.href = "opponentBets.html";
         }
     }
@@ -547,10 +517,8 @@ function correctPrediction(score, bet){
     var sx = score.split("-")[0];
     var sy = score.split("-")[1];
 
-    console.log(sx-sy , " || ", x-y)
 //          TEAM 1 GANHA               TEAM 2 GANHA                 EMPATAM
     if((sx-sy < 0 && x-y < 0) || (sx-sy > 0 && x-y > 0) || (sx-sy == 0 && x-y == 0)){
-        console.log(sx-sy , " || ", x-y)
         return true;
     }
         
@@ -668,7 +636,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
     let init = document.createElement('div');
     init.id = gameID;
     init.classList.add("fixture");
-    // if (canBet(new Date(match_info))) {
+    if (canBet(new Date(match_info))) {
         init.onclick = function (event) {
             document.getElementById("empty").classList.add('empty'); //change background opacity
 
@@ -694,7 +662,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
 
             document.querySelector(".popup").style.display = "block"; //show game
         }
-    // }
+    }
 
     let scoreboar = document.createElement('div');
     scoreboar.classList.add("score-board");
@@ -743,7 +711,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
     // console.log(match_bet);
     if (match_bet != "") {
         bet.innerHTML = match_bet;
-        changeBetColor(match_score, bet);
+        //changeBetColor(match_score, bet);
     }
     else {
         bet.style.display = "none";
@@ -876,6 +844,7 @@ function newMatch1(gameID, home_team, away_team, match_info, match_score, match_
     }
 }
 
+//Not beeing used
 function changeBetColor(score, elem_bet) {
     bet = elem_bet.innerHTML;
     if (score != "" && bet != "") {
@@ -900,18 +869,6 @@ function changeBetColor(score, elem_bet) {
     }
 }
 
-function setDate(game) {
-    let monthsAbr = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dez"];
-    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-    var month = game.info.split(" ")[0];
-    var day = game.info.split(" ")[1];
-    let hour = game.info.split(" ")[3];
-    let date = new Date(months[monthsAbr.indexOf(month)] + " " + day + ", 2022 " + hour);
-
-    matchesArray.push(date)
-    // console.log(matchesArray);
-}
 
 /**
  * This method creates, acording to the date of the game,
@@ -1026,6 +983,7 @@ function loginUser() {
                 let error_code = error.code;
                 let error_msg = error.message;
                 alert(error_msg);
+
             });
     }
     else {
