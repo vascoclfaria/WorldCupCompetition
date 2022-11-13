@@ -2,16 +2,18 @@
 <html>
 
 <head>
-    <title>Beachly - Login</title>
+    <title>WorldCup Competition</title>
+
     <meta charset="utf-8">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Google fonts CSS -->
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <script src="https://kit.fontawesome.com/d974e5062b.js" crossorigin="anonymous"></script>
     <!-- Icon of page -->
-    <link rel="shortcut icon" href="imgs/favicon-32x32.png">
+    <link href="images/favicon.ico" rel="icon">
 
 
     <!-- Custom styles for this template -->
@@ -20,66 +22,46 @@
     <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body id="body" style="opacity: 0;">
+<body id="body">
+    <!--style="opacity: 0;" -->
     <video autoplay muted loop id="myVideo">
         <source src="video/World Cup Qatar 2022 Promo.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
-      </video>
+    </video>
 
-    <div class="login">
-        <div class="left">
-            <h3>Log in to your account</h3>
-
-            <form id="loginForm" class="login-form">
-                <label class="input">
-                    <span>Email address</span>
-                    <input id="email" class="input" type="email" placeholder="Enter your email address" />
-                </label>
-                <label class="input">
-                    <span>Password</span>
-                    <div class="input">
-                        <input id="password" type="password" placeholder="Enter your password" />
-                        <button id="btn_eye" class="btn-search far fa-eye-slash" onclick="changeInputType()"></button>
+    <section class="login">
+        <div class="loginCard m-4">
+            <form id="formLogin">
+                <h3>Log in to your account</h3>
+                <div class="form-group">
+                    <label class="input">
+                        <span>Username or Email address</span>
+                        <input id="user" class="input" type="text" placeholder="Enter your username or email" required />
+                    </label>
+                    <label class="input">
+                        <span>Password</span>
+                        <div class="input">
+                            <input id="password" type="password" placeholder="Enter your password" required />
+                            <button type="button" id="btn_eye" class="far fa-eye-slash" onclick="changeInputType()"></button>
+                        </div>
+                    </label>
+                    <div class="footer">
+                        <span>Don’t have an account? </span>
+                        <a id="btn_register" href="register.html" class="sign">Sign up</a>
                     </div>
-                </label>
-                <button id="test" class="submit">Log in</a></button>
-            </form>
-
-            <div class="left-footer">
-                <span>Don’t have an account? </span>
-                <a href="register.html" class="sign">Sign up</a>
-            </div>
-
-            <!-- <div class="container mt-3">
-                <div class="row justify-content-center">
-                    <a href="#" class="btn-login google">
-                        <i class="fab fa-google"></i>
-                    </a>
-
-                    <a href="#" class="btn-login facebook">
-                        <i class="fab fa-facebook-square" style="width: 100%; height: 100%; color: #4285f4;"></i>
-                    </a>
                 </div>
-            </div> -->
+                <a id="loginForm" class="btn btn-primary w-100">Log in</a>
+            </form>
         </div>
-
-        <div class="right">
-            <img class="mx-auto d-block" src="images/2022_FIFA_World_Cup.png" width="150" height="187">
-            <div class="text">
-                <h5>Seamless data tiering with Online Archive</h5>
-                <p>Offload aged data from your cluster to a lower-cost, queryable storage tier. Create an Online Archive to start saving on storage costs.</p>
-            </div>
-        </div>
-    </div>
+    </section>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script src="js/firebase.js"></script>
-<script src="js/general.js"></script>
 
 <script>
     function changeInputType() {
-        var x = document.getElementById("input_pass");
+        var x = document.getElementById("password");
         let eye = document.getElementById("btn_eye");
         if (x.type === "password") {
             x.type = "text";
@@ -96,7 +78,7 @@
 <script type="text/javascript">
     var opacity = 0;
     var intervalID = 0;
-    window.onload = fadeIn;
+    //window.onload = fadeIn;
 
     function fadeIn() {
         setInterval(show, 100);
