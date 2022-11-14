@@ -19,8 +19,9 @@
 
   <!-- slider stylesheet -->
   <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" /> -->
-  <!-- bootstrap core css -->
-  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -101,11 +102,12 @@
       </div>
     </div>
     <div class="footer-right col-md-4 col-sm-6">
-      <h2> Company<span> logo</span></h2>
+      <h2> World Cup<span> Competition</span></h2>
       <p class="menu">
         <a href="home.html">Jogos</a> |
         <a href="classification.html">Pontuações</a> |
-        <a href="rules.html">Regras</a>
+        <a href="rules.html">Regras</a> |
+        <a href="#" onclick="logOut();">Sair</a>
       </p>
       <p class="name"> &copy; 2022 All Rights Reserved By VCLF INC.</p>
     </div>
@@ -191,12 +193,13 @@
           </div>
         </div>
       </div>
-      <button class="submit">Save</button>
+      <p id="error_msg" class="error_msg"></p>  
+      <button class="btn-save btn w-75">Save</button>
     </form>
   </div>
 
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> -->
   <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>

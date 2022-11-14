@@ -21,7 +21,7 @@
     <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-<body id="body" style="opacity: 0;">
+<body id="body" style=" background-image: linear-gradient(purple, blue);">
     <video autoplay muted loop id="myVideo">
         <source src="video/World Cup Qatar 2022 Promo.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
@@ -48,6 +48,14 @@
                             <button type="button" id="btn_eye" class="far fa-eye-slash" onclick="changeInputType()"></button>
                         </div>
                     </label>
+                    <div class="footer">
+                        <p id="error_msg" class="error_msg"></p>                   
+                    </div>
+                </div>
+                <div id="loader" class="spinner" style="width: 10px; height: 60px;transform: scale(0.7); display: none;">
+                    <div class="circle one"></div>
+                    <div class="circle two"></div>
+                    <div class="circle three"></div>
                 </div>
                 <a id="registerForm" class="btn btn-primary w-100">Register</a>
             </form>
@@ -77,7 +85,7 @@
 <script type="text/javascript">
     var opacity = 0;
     var intervalID = 0;
-    window.onload = fadeIn;
+    // window.onload = fadeIn;
 
     function fadeIn() {
         setInterval(show, 100);

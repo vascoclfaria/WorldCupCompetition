@@ -8,8 +8,8 @@ const firebaseConfig = {
     appId: "1:48661212629:web:4eed234bd4eaaae5cf215c"
 };
 
-//initialize variables  
-const firebaseApp = firebase.initializeApp(firebaseConfig); //initialize Firebase  
+//initialize variables
+const firebaseApp = firebase.initializeApp(firebaseConfig); //initialize Firebase
 const auth = firebase.auth(firebaseApp);
 const db = firebase.database();
 const gamesDB = db.ref('World Cup Competition');
@@ -22,6 +22,7 @@ console.log(file);
 
 // //get username from local storage
 _player = localStorage.getItem("username");
+console.log(_player)
 
 switch (file) {
     case 'index.html':
@@ -30,6 +31,35 @@ switch (file) {
         //     e.preventDefault(); //stop form from submitting
         //     window.location.href = "register.html";
         // });
+
+        //redirect to home page if user loged in
+        document.getElementById('loginForm').style.display = "none";
+        document.getElementById('loader').style.display = "flex";
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                let playerEmail = user.email;
+                db.ref('Users').once("value", function (snapshot) {
+                    var users = snapshot.val();
+                    for (let u in users) {
+                        db.ref('Users').child(u).once("value", function (snapshot) {
+                            var user = snapshot.val();
+
+                            // console.log("   ", user.email, playerEmail)
+                            if (user.email == playerEmail) {
+                                localStorage.setItem("username", u);
+                                console.log("DEU: username")
+                                
+                                console.log(localStorage.getItem("username"))
+                                window.location.href = "home.html";
+                            }
+                        });
+                    }
+                });
+            }else{
+                document.getElementById('loginForm').style.display = "block";
+                document.getElementById('loader').style.display = "none";
+            }
+        });
 
         //login player
         document.getElementById('loginForm').addEventListener('click', function (e) {
@@ -47,6 +77,9 @@ switch (file) {
         });
         break;
     case 'home.html':
+        //check if is any user login in to access this page
+        checkAuthorisation();
+
         //add all the games in the DB to welcome page
         document.getElementById('tables').style.display = "none";
         gamesDB.once("value", function (snapshot) {
@@ -108,10 +141,12 @@ switch (file) {
 
                                 if (home == home_team && away == away_team) {
                                     if (!canBet(new Date(info))) {
-                                        alert("O tempo para apostar/alterar aposta terminou");
+                                        document.getElementById('error_msg').innerHTML = "O tempo para apostar/alterar aposta terminou";
+                                        //alert("O tempo para apostar/alterar aposta terminou");
                                     }
                                     else if (home_score == "" || away_score == "") {
-                                        alert("Aposta inválida");
+                                        // alert("Aposta inválida");
+                                        document.getElementById('error_msg').innerHTML = "Aposta inválida";
                                     }
                                     else {
                                         //Update bet in DB World Cup Competition
@@ -131,11 +166,15 @@ switch (file) {
                                             db.ref('Users/' + _player).update({
                                                 bets: bets
                                             });
+
+                                            window.location.reload();
                                         });
 
 
-                                        alert("Aposta colocada");
-                                        window.location.href = file;
+                                        document.getElementById('error_msg').innerHTML = "Aposta colocada";
+                                        document.getElementById('error_msg').style.color = "green";
+                                        // alert("Aposta colocada");
+                                        // window.location.reload();
                                     }
                                 }
                             });
@@ -161,7 +200,7 @@ switch (file) {
                             option.value = game.home + " - " + game.away + " (" + game.info.split("T")[0] + ")";
                             option.id = p.replace(/\s/g, "-") + " " + g;
                             list.appendChild(option);
-                            
+
                             // console.log(option.value);
                         });
                     }
@@ -239,21 +278,21 @@ switch (file) {
                                 let pointsTable = getPointsTable(phase);
                                 console.log(pointsTable)
 
-                                if(correctPrediction(score, bet)){                            
+                                if (correctPrediction(score, bet)) {
                                     if (x == sx && y == sy) {
                                         points += pointsTable["correct"];
-                                    }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo   
-                                    else if (Math.abs(x - y) == Math.abs(sx - sy) || Math.abs(x - y)+1 == Math.abs(sx - sy) || Math.abs(x - y)-1 == Math.abs(sx - sy)) {
+                                    }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo
+                                    else if (Math.abs(x - y) == Math.abs(sx - sy) || Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)) {
                                         points += pointsTable["diffGoals"];
-                                    }                               
+                                    }
                                     else {
                                         points += pointsTable["winTieDef"];
                                     }
-                                }else if(Math.abs(x - y)+1 == Math.abs(sx - sy) || Math.abs(x - y)-1 == Math.abs(sx - sy)){
+                                } else if (Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)) {
                                     points += pointsTable["oneAway"];
                                 }
-                                
-                            
+
+
                                 // console.log("   Points: ", points);
                                 usersDB.child(u).update({
                                     points: points
@@ -269,13 +308,16 @@ switch (file) {
 
             alert("Jogo colocado na base de dados");
 
-            
+
             document.getElementById('game').value = "";
             document.getElementById('score').value = "";
         });
         break;
     case 'classification.html':
-        //create PlayerScores table and fill it with the players 
+        //check if is any user login in to access this page
+        checkAuthorisation();
+
+        //create PlayerScores table and fill it with the players
         let scores_table = document.getElementById('scores_table');
         scores_table.style.display = "none";
 
@@ -301,6 +343,9 @@ switch (file) {
         });
         break;
     case 'opponentBets.html':
+        //check if is any user login in to access this page
+        checkAuthorisation();
+
         //get opponent username
         let oppUsename = localStorage.getItem("opponent");
 
@@ -316,18 +361,18 @@ switch (file) {
         //show opponent bets
         document.getElementById('tables').style.display = "none";
         document.getElementById('msg').style.display = "none";
-        var usersDB = db.ref("Users/"+oppUsename+"/bets");
+        var usersDB = db.ref("Users/" + oppUsename + "/bets");
         let count = 0;
         newSection("Apostas")
         usersDB.once("value", function (snapshot) {
             var bets = snapshot.val();
             console.log("Apostas: ", bets);
-            for(let b in bets){
+            for (let b in bets) {
                 // console.log("gameBet",b);
                 gamesDB.once("value", function (snapshot) {
                     var fase = snapshot.val();
                     // console.log("Fase: ", fase);
-                    for(let f in fase){
+                    for (let f in fase) {
                         // console.log(f);
                         gamesDB.child(f).once("value", function (snapshot) {
                             var games = snapshot.val();
@@ -335,7 +380,7 @@ switch (file) {
                             // console.log("games: ", games);
                             for (let g in games) {
                                 console.log(g, gamesKeys[gamesKeys.length - 1])
-                                if(g === b){
+                                if (g === b) {
                                     console.log("+1 JOGO ")
                                     count++;
                                     gamesDB.child(f).child(g).once("value", function (snapshot) {
@@ -343,24 +388,27 @@ switch (file) {
                                         var gameID = "game_" + count;
                                         var playerBet = getPlayerBet(game.bets, oppUsename);
                                         // console.log(gameID, ": ", playerBet)
-            
+
                                         //console.log(gameID, home_team, away_team, match_info, match_score, match_bet, matchesArr);
-                                        if(!canBet(canBet(new Date(game.info)))){
+                                        if (!canBet(new Date(game.info))) {
                                             newMatch1(gameID, game.home, game.away, game.info, game.score, playerBet, games);
                                             document.getElementById('tables').style.display = "block";
+                                            document.getElementById('msg').style.display = "none";
+                                        }
+                                        else {
+                                            document.getElementById('msg').style.display = "block";
                                         }
 
-                                        document.getElementById('msg').style.display = "none";
                                         // console.log(g, gamesKeys[gamesKeys.length - 1])
                                         // if(g === gamesKeys[gamesKeys.length - 1]){
                                         //     console.log("SOU O ULTIMO ", count)
                                         //     document.getElementById('msg').style.display = "block";
                                         // }
-                                    })
-                                }else if(g === gamesKeys[gamesKeys.length - 1] && count == 0){
+                                    });
+                                } else if (g === gamesKeys[gamesKeys.length - 1] && count == 0) {
                                     console.log("SOU O ULTIMO ", count)
                                     document.getElementById('msg').style.display = "block";
-                                }   
+                                }
                             }
                         });
                     }
@@ -374,7 +422,7 @@ switch (file) {
     //TODO
 }
 
-function getPointsTable(competitionPhase){
+function getPointsTable(competitionPhase) {
     let table = {}
     switch (competitionPhase) {
         case "Fase de Grupos":
@@ -424,7 +472,7 @@ function getPointsTable(competitionPhase){
     return table;
 }
 
-function newTable(){
+function newTable() {
     let div = document.createElement('div');
     div.classList.add("about_section");
     div.classList.add("layout_padding");
@@ -435,7 +483,7 @@ function newTable(){
 
     let secoundContainer = document.createElement('div');
     secoundContainer.classList.add("container");
-    
+
     let classification = document.createElement('div');
     classification.classList.add("classification");
 
@@ -460,7 +508,7 @@ function newTable(){
 
     let pointsT = document.createElement('div');
     pointsT.classList.add("cell");
-    pointsT.innerHTML = "Pontos" 
+    pointsT.innerHTML = "Pontos"
 
     header.appendChild(posT);
     header.appendChild(nameT);
@@ -474,19 +522,19 @@ function newTable(){
     scores_table.appendChild(div);
 }
 
-function newTableEntry(username, userdata, position){
+function newTableEntry(username, userdata, position) {
     let table = document.getElementById("table");
 
     let row = document.createElement('div');
     row.classList.add("row");
-    if(username != _player){
+    if (username != _player) {
         row.style.cursor = 'pointer';
         row.onclick = function (event) {
             localStorage.setItem("opponent", username);
             window.location.href = "opponentBets.html";
         }
     }
-   
+
 
     let pos = document.createElement('div');
     pos.classList.add("cell");
@@ -497,13 +545,18 @@ function newTableEntry(username, userdata, position){
     name.classList.add("cell");
     name.setAttribute("data-title", "Nome");
     name.innerHTML = username;
-    if(username === _player)
-        row.style.backgroundColor = "yellow"; 
 
     let points = document.createElement('div');
     points.classList.add("cell");
     points.setAttribute("data-title", "Pontos");
     points.innerHTML = userdata.points;
+
+    if (username === _player){
+        row.style.backgroundColor = "rgba(110, 15, 47, 0.95)";
+        pos.style.color = "white"
+        name.style.color = "white"
+        points.style.color = "white"
+    }
 
     row.appendChild(pos);
     row.appendChild(name);
@@ -511,26 +564,26 @@ function newTableEntry(username, userdata, position){
     table.appendChild(row);
 }
 
-function correctPrediction(score, bet){
+function correctPrediction(score, bet) {
     var x = bet.split("-")[0];
     var y = bet.split("-")[1];
     var sx = score.split("-")[0];
     var sy = score.split("-")[1];
 
-//          TEAM 1 GANHA               TEAM 2 GANHA                 EMPATAM
-    if((sx-sy < 0 && x-y < 0) || (sx-sy > 0 && x-y > 0) || (sx-sy == 0 && x-y == 0)){
+    //          TEAM 1 GANHA               TEAM 2 GANHA                 EMPATAM
+    if ((sx - sy < 0 && x - y < 0) || (sx - sy > 0 && x - y > 0) || (sx - sy == 0 && x - y == 0)) {
         return true;
     }
-        
-    
+
+
     return false;
 }
 
 /**
- * This method sorts the games in the DB by there date. The sonner the games is 
+ * This method sorts the games in the DB by there date. The sonner the games is
  * the earliest it appeares in the game table
- * 
- * @param {*} arrDB 
+ *
+ * @param {*} arrDB
  */
 function sortByDate(arrDB) {
     let keys = [];
@@ -541,10 +594,10 @@ function sortByDate(arrDB) {
     }
 
     //Sort games by date
-    values.sort((a, b) => (a.info < b.info ? 1 : -1));
+    values.sort((a, b) => (a.info < b.info ? -1 : 1));
 
     let aux = {};
-    for (let idx in values){
+    for (let idx in values) {
         let key = Object.keys(arrDB).find(key => arrDB[key] === values[idx])
         let value = values[idx]
 
@@ -557,7 +610,7 @@ function sortByDate(arrDB) {
 /**
  * This method sorts the users in the DB by points. Higher the points higher the
  * players position in the classification table
- * @param {*} arrDB 
+ * @param {*} arrDB
  */
 function sortByPoints(arrDB) {
     let keys = [];
@@ -571,7 +624,7 @@ function sortByPoints(arrDB) {
     values.sort((a, b) => (a.points < b.points ? 1 : -1));
 
     let aux = {};
-    for (let idx in values){
+    for (let idx in values) {
         let key = Object.keys(arrDB).find(key => arrDB[key] === values[idx])
         let value = values[idx]
 
@@ -581,9 +634,9 @@ function sortByPoints(arrDB) {
     return aux;
 }
 /**
- * This method creates a new section/table to place games. Each section defines a 
+ * This method creates a new section/table to place games. Each section defines a
  * phase of the competition
- * @param {*} name 
+ * @param {*} name
  */
 function newSection(name) {
     let tables = document.getElementById("tables");
@@ -621,14 +674,14 @@ function newSection(name) {
 /**
  * This method creates a new entry on the table for the game
  * in question
- * 
- * @param {*} gameID 
- * @param {*} home_team 
- * @param {*} away_team 
- * @param {*} match_info 
- * @param {*} match_score 
- * @param {*} match_bet 
- * @param {*} matchesArr 
+ *
+ * @param {*} gameID
+ * @param {*} home_team
+ * @param {*} away_team
+ * @param {*} match_info
+ * @param {*} match_score
+ * @param {*} match_bet
+ * @param {*} matchesArr
  */
 function newMatch(posName, gameID, home_team, away_team, match_info, match_score, match_bet, matchesArr) {
     let games = document.getElementById(posName)
@@ -873,8 +926,8 @@ function changeBetColor(score, elem_bet) {
 /**
  * This method creates, acording to the date of the game,
  * a date string to be displayed to the user
- * 
- * @param {*} sMachInfo 
+ *
+ * @param {*} sMachInfo
  */
 function dateToString(sMachInfo) {
     let monthsAbr = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dez"];
@@ -891,10 +944,10 @@ function dateToString(sMachInfo) {
 }
 
 /**
- * This method checks whether a player can bet / change bets 
+ * This method checks whether a player can bet / change bets
  * or not
- * 
- * @param {*} gameDate 
+ *
+ * @param {*} gameDate
  */
 function canBet(gameDate) {
     let todaysDate = new Date();
@@ -907,9 +960,9 @@ function canBet(gameDate) {
 /**
  * This method return the players bet in case he made one
  * or not
- * 
+ *
  * @param {*} arrBets    //all bets of the game
- * @param {*} playerName 
+ * @param {*} playerName
  */
 function getPlayerBet(arrBets, playerName) {
     for (key in arrBets) {
@@ -920,40 +973,76 @@ function getPlayerBet(arrBets, playerName) {
 }
 
 /**
- * This method registers new user in the firebase DataBase 
- * 
+ * This method registers new user in the firebase DataBase
+ *
  */
 function registerUser() {
     let username = document.getElementById('username').value;
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(function () {
-            let user = auth.currentUser;
+    //hide login and error_msg btn and show loader
+    document.getElementById('registerForm').style.display = "none";
+    document.getElementById('loader').style.display = "flex";
+    document.getElementById('error_msg').innerHTML = "";
 
-            db.ref('Users/' + username).set({
-                email: email,
-                points: 0,
-                bets: { "GameRef": "bet" }
-            })
+    db.ref('Users').once("value", function (snapshot) {
+        var user = snapshot.val();
+        var valid = true;
+        for (let u in user) {
+            if (u === username) {
+                valid = false;
+                break;
+            }
+        }
 
-            window.location.href = "index.html";
-        })
-        .catch(function (error) {
-            let error_code = error.code;
-            let error_msg = error.message;
-            alert(error_msg);
-        });
+        if (valid) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function () {
+                    let user = auth.currentUser;
+
+                    db.ref('Users/' + username).set({
+                        email: email,
+                        points: 0,
+                        bets: { "GameRef": "bet" }
+                    })
+
+                    window.location.href = "index.html";
+                })
+                .catch(function (error) {
+                    let error_code = error.code;
+                    let error_msg = error.message;
+
+                    //hide loader and show login btn
+                    document.getElementById('registerForm').style.display = "block";
+                    document.getElementById('loader').style.display = "none";
+
+                    document.getElementById('error_msg').innerHTML = error_msg;
+                    // alert(error_msg);
+                });
+        }
+        else {
+            document.getElementById('error_msg').innerHTML = "Username already exist";
+            //hide loader and show login btn
+            document.getElementById('registerForm').style.display = "block";
+            document.getElementById('loader').style.display = "none";
+        }
+    });
+
 }
 
 /**
- * This method is responsible for the login of user 
- * 
+ * This method is responsible for the login of user
+ *
  */
 function loginUser() {
     let user = document.getElementById('user').value;
     let password = document.getElementById('password').value;
+
+    //hide login and error_msg btn and show loader
+    document.getElementById('loginForm').style.display = "none";
+    document.getElementById('loader').style.display = "flex";
+    document.getElementById('error_msg').innerHTML = "";
 
     if (user.includes("@")) {
         var email = user;
@@ -973,6 +1062,7 @@ function loginUser() {
                             if (user.email == playerEmail) {
                                 // console.log("DEU: email")
                                 localStorage.setItem("username", u);
+
                                 window.location.href = "home.html";
                             }
                         });
@@ -982,7 +1072,14 @@ function loginUser() {
             .catch(function (error) {
                 let error_code = error.code;
                 let error_msg = error.message;
-                alert(error_msg);
+
+                //hide loader and show login btn
+                document.getElementById('loginForm').style.display = "block";
+                document.getElementById('loader').style.display = "none";
+
+                document.getElementById('error_msg').innerHTML = error_msg;
+
+                // alert(error_msg);
 
             });
     }
@@ -991,38 +1088,80 @@ function loginUser() {
         db.ref('Users/' + username).once("value", function (snapshot) {
             var user = snapshot.val();
             console.log(user)
-            if(user == null)
-                alert("Username não existe");
-            else{
+            if (user == null) {
+                document.getElementById('error_msg').innerHTML = "Username dosen't exist";
+                //hide loader and show login btn
+                document.getElementById('loginForm').style.display = "block";
+                document.getElementById('loader').style.display = "none";
+            }
+            else {
                 auth.signInWithEmailAndPassword(user.email, password)
-                .then(function () {
-                    let player = auth.currentUser;
-                    let playerEmail = player.email;
+                    .then(function () {
+                        let player = auth.currentUser;
+                        let playerEmail = player.email;
 
-                    db.ref('Users').once("value", function (snapshot) {
-                        var users = snapshot.val();
-                        for (let u in users) {
-                            db.ref('Users').child(u).once("value", function (snapshot) {
-                                var user = snapshot.val();
+                        db.ref('Users').once("value", function (snapshot) {
+                            var users = snapshot.val();
+                            for (let u in users) {
+                                db.ref('Users').child(u).once("value", function (snapshot) {
+                                    var user = snapshot.val();
 
-                                // console.log("   ", user.email, playerEmail)
-                                if (user.email == playerEmail) {
-                                    // console.log("DEU: username")
-                                    localStorage.setItem("username", u);
-                                    window.location.href = "home.html";
-                                }
-                            });
-                        }
+                                    // console.log("   ", user.email, playerEmail)
+                                    if (user.email == playerEmail) {
+                                        localStorage.setItem("username", u);
+                                        console.log("DEU: username")
+                                        
+                                        console.log(localStorage.getItem("username"))
+                                        window.location.href = "home.html";
+                                    }
+                                });
+                            }
+                        });
+                    })
+                    .catch(function (error) {
+                        let error_code = error.code;
+                        let error_msg = error.message;
+
+                        //hide loader and show login btn
+                        document.getElementById('loginForm').style.display = "block";
+                        document.getElementById('loader').style.display = "none";
+
+                        document.getElementById('error_msg').innerHTML = error_msg;
+
+
+                        // alert(error_msg);
                     });
-                })
-                .catch(function (error) {
-                    let error_code = error.code;
-                    let error_msg = error.message;
-                    alert(error_msg);
-                });
             }
         });
     }
+}
+
+/**
+ * This method is responsible for the logout of user
+ *
+ */
+function logOut(){
+    auth.signOut()
+        .then(function() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }, function(error) {
+            console.error('Sign Out Error', error);
+        });
+}
+
+/**
+ * This method checks wheter a user is already connected or not, redirecting those
+ * who are not connected to the login page
+ *
+ */
+function checkAuthorisation() {
+    auth.onAuthStateChanged(function (user) {
+        // console.log(user);
+        if (!user) {
+            window.location.href = "index.html";
+        }
+    });
 }
 
 

@@ -546,7 +546,9 @@ input[type=number]::-webkit-inner-spin-button {
 .popup {
   background-color: #ffffff;
   width: 420px;
-  padding: 30px 40px;
+  /* padding: 30px 40px;  */ /*top and bottom, right and left:*/
+  padding: 0px 40px 30px 40px; /*top, right, bottom, left*/
+  padding: 5px 5px 15px;
   position: fixed;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -561,6 +563,50 @@ input[type=number]::-webkit-inner-spin-button {
 .popup .fixture {
   cursor: default;
 }
+
+.popup .btn-save{
+  margin: 10px;
+  font-size: 15px;
+  width: 75%;
+  /* height: 50px; */
+  padding: 5px;
+  background-color: #6e0f2f;
+  color: white;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.btn-save:hover {
+  background: #0055dd;
+  color: #fff;
+  transition: 0.5s;
+}
+.btn-save:focus {
+  box-shadow: 0 0 0 5px rgba(0, 85, 255, 0.5)
+}
+
+/* .btn-primary {
+  margin: 10px;
+  font-size: 28px;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  background: #0055ff;
+  color: #fff;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: 0.5s;
+}
+.btn-primary:hover {
+  background: #0055dd;
+  color: #fff;
+  transition: 0.5s;
+}
+.btn-primary:focus {
+  box-shadow: 0 0 0 5px rgba(0, 85, 255, 0.5)
+} */
 
 
 
@@ -1070,7 +1116,7 @@ footer .name {
 
 .loginCard {
   width: 400px;
-  height: 450px;
+  height: auto;
   /* height: min-content; */
   padding: 20px;
   border-radius: 8px;
@@ -1148,6 +1194,11 @@ input:focus {
 
 .login .footer a {
   color: #4285f4;
+}
+
+.error_msg{
+  color: red;
+  padding-top: 10px;
 }
 
 /* .login .footer a,
