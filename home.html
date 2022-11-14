@@ -262,6 +262,7 @@
     if(typeof window.localStorage !== "undefined" && !localStorage.getItem('visited')) {
          // Set visited flag in local storage
          localStorage.setItem('visited', true);
+         window.location.href = "index.html"
          // Alert the user
          //alert("Hello my friend. This is your first visit.");   
     }
