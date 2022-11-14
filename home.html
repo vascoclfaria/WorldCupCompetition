@@ -257,7 +257,15 @@
   </script>
 
   <script>
-
+    window.onload = function() {
+    // Check if localStorage is available (IE8+) and make sure that the visited flag is not already set.
+    if(typeof window.localStorage !== "undefined" && !localStorage.getItem('visited')) {
+         // Set visited flag in local storage
+         localStorage.setItem('visited', true);
+         // Alert the user
+         //alert("Hello my friend. This is your first visit.");   
+    }
+}
   </script>
 
   <div id="empty" onclick="exitGame();"></div>
