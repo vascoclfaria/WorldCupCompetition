@@ -49,14 +49,12 @@ body {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: "Ethnocentric";
 }
 
 .hero_detail h1,
-h2,
-h3 {
+h2 {
   font-family: "Ethnocentric";
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
   text-shadow: 2px 2px 4px #000000;
@@ -405,12 +403,6 @@ nav {
   width: 20%;
 }
 
-.popup .fixture .team-img {
-  border-radius: 50%;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.21);
-  width: 40%;
-}
-
 .fixture .score-board {
   overflow: auto;
   display: table;
@@ -534,7 +526,7 @@ input[type=number]::-webkit-inner-spin-button {
   inset: 0;
   background-color: #0f0f0f;
   opacity: .9;
-  z-index: 999999999;
+  z-index: 99999999;
 }
 
 .empty:hover {
@@ -562,6 +554,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .popup .fixture {
   cursor: default;
+}
+
+.popup .fixture .team-img {
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.21);
+  width: 40%;
 }
 
 .popup .btn-save{
