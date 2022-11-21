@@ -293,7 +293,7 @@ switch (file) {
                                                 if (x == sx && y == sy) {
                                                     points += pointsTable["correct"];
                                                 }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo
-                                                else if (Math.abs(x - y) == Math.abs(sx - sy)    ||    x == sx && y == sy+1 || x == sx && y == sy-1  || x == sx-1 && y == sy || x == sx+1 && y == sy ) {     //Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)
+                                                else if (Math.abs(x - y) == Math.abs(sx - sy)    ||   ( x == sx && y == sy+1 ) || (x == sx && y == sy-1)  || (x == sx-1 && y == sy) || (x == sx+1 && y == sy) ) {     //Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)
                                                     points += pointsTable["diffGoals"];
                                                 }
                                                 else {
