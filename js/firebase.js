@@ -707,7 +707,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
     let init = document.createElement('div');
     init.id = gameID;
     init.classList.add("fixture");
-    // if (canBet(new Date(match_info))) {
+    if (canBet(new Date(match_info))) {
         init.onclick = function (event) {
             document.getElementById("empty").classList.add('empty'); //change background opacity
 
@@ -733,7 +733,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
 
             document.querySelector(".popup").style.display = "block"; //show game
         }
-    // }
+    }
 
     let scoreboar = document.createElement('div');
     scoreboar.classList.add("score-board");
