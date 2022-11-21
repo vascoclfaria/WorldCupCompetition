@@ -1,2 +1,2 @@
-<?php include_once("https://world-cup-competition1.herokuapp.com/home.html");?>
+<?php include_once("http://localhost:8000/home.html");?>
 
