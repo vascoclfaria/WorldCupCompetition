@@ -274,7 +274,7 @@ switch (file) {
                                     // console.log("Bets: ", user);
                                     var bets = user.bets;
                                     // var points = parseInt(user.points);
-                                    var points = 0;
+                                    var points = 0; //USAR ESTA LINHA SO PARA TESTES AO SITE
                                     console.log(u)
                                     for (b in bets) {
                                         if (b === game) { //if (b != "GameRef") {
@@ -293,16 +293,15 @@ switch (file) {
                                                 if (x == sx && y == sy) {
                                                     points += pointsTable["correct"];
                                                 }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo
-                                                else if (Math.abs(x - y) == Math.abs(sx - sy) || Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)) {
+                                                else if (Math.abs(x - y) == Math.abs(sx - sy)    ||    x == sx && y == sy+1 || x == sx && y == sy-1  ||  x == sx+1 && y == sy || x == sx-1 && y == sy) {     //Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)
                                                     points += pointsTable["diffGoals"];
                                                 }
                                                 else {
                                                     points += pointsTable["winTieDef"];
                                                 }
-                                            } else if (Math.abs(x - y) + 1 == Math.abs(sx - sy) || Math.abs(x - y) - 1 == Math.abs(sx - sy)) {
+                                            } else if (x == sx && y == sy+1 || x == sx && y == sy-1  ||  x == sx+1 && y == sy || x == sx-1 && y == sy) {
                                                 points += pointsTable["oneAway"];
                                             }
-
 
                                             // console.log("   Points: ", points);
                                             usersDB.child(u).update({
@@ -708,7 +707,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
     let init = document.createElement('div');
     init.id = gameID;
     init.classList.add("fixture");
-    if (canBet(new Date(match_info))) {
+    // if (canBet(new Date(match_info))) {
         init.onclick = function (event) {
             document.getElementById("empty").classList.add('empty'); //change background opacity
 
@@ -734,7 +733,7 @@ function newMatch(posName, gameID, home_team, away_team, match_info, match_score
 
             document.querySelector(".popup").style.display = "block"; //show game
         }
-    }
+    // }
 
     let scoreboar = document.createElement('div');
     scoreboar.classList.add("score-board");
