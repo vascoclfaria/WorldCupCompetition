@@ -273,8 +273,8 @@ switch (file) {
                                     var user = snapshot.val();
                                     // console.log("Bets: ", user);
                                     var bets = user.bets;
-                                    // var points = parseInt(user.points);
-                                    var points = 0; //USAR ESTA LINHA SO PARA TESTES AO SITE
+                                    var points = parseInt(user.points);
+                                    // var points = 0; //USAR ESTA LINHA SO PARA TESTES AO SITE
                                     console.log(u)
                                     for (b in bets) {
                                         if (b === game) { //if (b != "GameRef") {
@@ -293,13 +293,13 @@ switch (file) {
                                                 if (x == sx && y == sy) {
                                                     points += pointsTable["correct"];
                                                 }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo
-                                                else if ( (Math.abs(x - y) == Math.abs(sx - sy)) || ( x == sx && y == sy+1 ) || (x == sx && y == sy-1)  || (x == sx+1 && y == sy) || (x == sx-1 && y == sy) ) {     
+                                                else if ( (Math.abs(x - y) == Math.abs(sx - sy)) || (x == sx && y == sy+1) || (x == sx && y == sy-1)  || (x == sx+1 && y == sy) || (x == sx-1 && y == sy) ) {     
                                                     points += pointsTable["diffGoals"];
                                                 }
                                                 else {
                                                     points += pointsTable["winTieDef"];
                                                 }
-                                            } else if (x == sx && y == sy+1 || x == sx && y == sy-1  ||  x == sx+1 && y == sy || x == sx-1 && y == sy) {
+                                            } else if ((x == sx && y == sy+1) || (x == sx && y == sy-1)  || (x == sx+1 && y == sy) || (x == sx-1 && y == sy)) {
                                                 points += pointsTable["oneAway"];
                                             }
 
