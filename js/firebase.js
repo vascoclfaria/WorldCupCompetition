@@ -280,10 +280,10 @@ switch (file) {
                                         if (b === game) { //if (b != "GameRef") {
                                             var bet = bets[b];
                                             // console.log("Bets: ", bet);
-                                            var x = bet.split("-")[0];
-                                            var y = bet.split("-")[1];
-                                            var sx = score.split("-")[0];
-                                            var sy = score.split("-")[1];
+                                            var x = parseInt(bet.split("-")[0]);
+                                            var y = parseInt(bet.split("-")[1]);
+                                            var sx = parseInt(score.split("-")[0]);
+                                            var sy = parseInt(score.split("-")[1]);
                                             // console.log("VALOR: ", Math.abs(x - y), x, y)
                                             console.log("PHASE: ", phase)
                                             let pointsTable = getPointsTable(phase);
@@ -293,19 +293,7 @@ switch (file) {
                                                 if (x == sx && y == sy) {
                                                     points += pointsTable["correct"];
                                                 }   //             Diferença de golos                                         Ficar a 1 golo do resultado certo
-                                                else if (Math.abs(x - y) == Math.abs(sx - sy)) {     
-                                                    points += pointsTable["diffGoals"];
-                                                }
-                                                else if (x == sx && y == sy+1) {     
-                                                    points += pointsTable["diffGoals"];
-                                                }
-                                                else if (x == sx && y == sy-1) {     
-                                                    points += pointsTable["diffGoals"];
-                                                }
-                                                else if (x == sx+1 && y == sy) {     
-                                                    points += pointsTable["diffGoals"];
-                                                }
-                                                else if (x == sx-1 && y == sy) {     
+                                                else if ( (Math.abs(x - y) == Math.abs(sx - sy)) || ( x == sx && y == sy+1 ) || (x == sx && y == sy-1)  || (x == sx+1 && y == sy) || (x == sx-1 && y == sy) ) {     
                                                     points += pointsTable["diffGoals"];
                                                 }
                                                 else {
