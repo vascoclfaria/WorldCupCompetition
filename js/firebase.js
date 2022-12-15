@@ -255,6 +255,7 @@ switch (file) {
                         var datalist = document.getElementById('games');
                         var id = datalist.querySelector(`[value="${input.value}"]`).id;
                         var phase = id.split(" ")[0].replace(/-/g, ' ');
+                        if(phase === "Semi-Final"){phase = "Semi Final";} //TODO: CORRIGIR ESTE ERRO 
                         var game = id.split(" ")[1];
                         var score = document.getElementById('score').value;
                         console.log("GAME: ", phase, game, score)
